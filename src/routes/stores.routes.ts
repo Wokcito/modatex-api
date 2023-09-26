@@ -16,7 +16,9 @@ const enum QueryFields {
     MAX_MINIMUM = 'maxMinimum',
     MIN_MINIMUM = 'minMinimum',
     FLASH_DISCOUNT = 'flashDiscount',
-	ORDER = 'order'
+	ORDER = 'order',
+	START = 'start',
+	LIMIT = 'limit'
 }
 
 const FIELD_ORDERS = ['reputation', 'minimum', 'name', 'sales', 'sales_percent']
@@ -39,7 +41,9 @@ storesRouter.get('/:section', [
 		QueryFields.MIN_REPUTATION,
 		QueryFields.MAX_MINIMUM,
 		QueryFields.MIN_MINIMUM,
-		QueryFields.FLASH_DISCOUNT
+		QueryFields.FLASH_DISCOUNT,
+		QueryFields.START,
+		QueryFields.LIMIT
 	])
 		.optional()
 		.isNumeric().withMessage('It must be a number'),
