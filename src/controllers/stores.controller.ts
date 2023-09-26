@@ -5,12 +5,29 @@ import { StoreService } from '../services'
 const storeService = new StoreService()
 
 export async function getStores(req: Request, res: Response, next: NextFunction): Promise<void> {
-	const { ranks, flashDiscount, ...query } = req.query
 	const section = req.params.section
+
+	const {
+		ranks,
+		flashDiscount,
+		minSales,
+		minSalesPercent,
+		maxMinimum,
+		minMinimum,
+		start,
+		limit,
+		...query
+	} = req.query
 
 	const storeQuery = {
 		ranks: (decodeURIComponent(ranks as string)).split(','),
 		flashDiscount: (flashDiscount as string) === '1',
+		minSales: minSales !== undefined ? parseInt(minSales as string) : undefined,
+		minSalesPercent: minSalesPercent !== undefined ? parseInt(minSalesPercent as string) : undefined,
+		maxMinimum: maxMinimum !== undefined ? parseInt(maxMinimum as string) : undefined,
+		minMinimum: minMinimum !== undefined ? parseInt(minMinimum as string) : undefined,
+		start: start !== undefined ? parseInt(start as string) : undefined,
+		limit: limit !== undefined ? parseInt(limit as string) : undefined,
 		...query
 	}
 

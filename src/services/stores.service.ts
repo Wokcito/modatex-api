@@ -105,7 +105,7 @@ export class StoreService {
 
 		const storesQuantity = stores.length
 
-		stores = stores.slice(start, limit)
+		stores = limit === undefined ? stores.slice(start) : stores.slice(start, start + limit)
 
 		return {
 			recordsFiltered: storesQuantity,
