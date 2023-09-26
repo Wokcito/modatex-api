@@ -57,7 +57,7 @@ export class StoreService {
 			minSalesPercent,
 			fieldOrder,
 			order,
-			length,
+			limit,
 			start = 0
 		}: StoresQuery
 	): Result {
@@ -105,7 +105,7 @@ export class StoreService {
 
 		const storesQuantity = stores.length
 
-		stores = stores.slice(start, length)
+		stores = stores.slice(start, limit)
 
 		return {
 			recordsFiltered: storesQuantity,

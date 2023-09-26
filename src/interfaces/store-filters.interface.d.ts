@@ -10,7 +10,7 @@ export interface StoresQuery {
     minMinimum?: number
     flashDiscount?: boolean
     start?: number
-    length?: number
+    limit?: number
 }
 
 type Rank = 'premium' | 'black' | 'platinum' | 'gold' | 'blue'

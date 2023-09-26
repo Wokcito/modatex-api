@@ -52,7 +52,7 @@ ACCEPTED_ORIGIN="https://yourweb.com"
 - minMinimum: `number`
 - flashDiscount: `1 = true` _(boolean)_
 - start: `number`
-- length: `number`
+- limit: `number`
 - order: `'asc'` | `'desc'`
 - fieldOrder: `'reputation'` | `'minimum'` | `'name'` | `'sales'` | `'sales_percent'`
 
