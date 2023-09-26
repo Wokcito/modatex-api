@@ -68,6 +68,7 @@ const RANKS = 'premium,black,platinum,gold,blue'
 const NAME = 'holic'
 
 fetch(`http://localhost:3000/stores/${SECTION}?ranks=${RANKS}&name=${NAME}`)
+  .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.log(error))
 ```
