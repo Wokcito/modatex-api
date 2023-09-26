@@ -61,7 +61,7 @@ export class StoreService {
 			start = 0
 		}: StoresQuery
 	): Result {
-		if (flashDiscount !== undefined) stores = this.flashDiscountFilter(stores)
+		if (flashDiscount !== false) stores = this.flashDiscountFilter(stores)
 		if (minReputation !== undefined) stores = this.reputationFilter(stores, minReputation)
 		if (name !== undefined) stores = this.nameFilter(stores, name)
 		if (minMinimum !== undefined) stores = this.minMinimumFilter(stores, minMinimum)
