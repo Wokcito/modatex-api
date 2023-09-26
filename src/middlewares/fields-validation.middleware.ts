@@ -5,6 +5,7 @@ export function validationResult(req: Request, res: Response, next: NextFunction
 	const errors = result(req)
 	if (!errors.isEmpty()) {
 		res.status(400).json(errors)
+		return
 	}
 	next()
 }
