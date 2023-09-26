@@ -28,7 +28,7 @@ Create a new .env file in the project root and add the next variables
 ```
 MEDIA_SERVER="https://netivooregon.s3.amazonaws.com/"
 MT3="https://www.modatex.com.ar/modatexrosa3/"
-ACCEPTED_ORIGIN="https://facebook.com"
+ACCEPTED_ORIGIN="https://yourweb.com"
 ```
 
 ## Endpoints
