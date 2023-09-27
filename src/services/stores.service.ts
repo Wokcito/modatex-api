@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { type StoreDTO } from '../dtos'
 import { type Store } from '../models'
-import { type StoresQuery } from '../interfaces'
+import { type GetStoresQuery } from '../interfaces'
 import { fromStoreToDTO } from '../mappers'
 
 const FIELD_MINIMUM = 'minimum'
@@ -18,7 +18,7 @@ interface Result {
 }
 
 export class StoreService {
-	public async getStores(section: string, filters: StoresQuery): Promise<Result> {
+	public async getStores(section: string, filters: GetStoresQuery): Promise<Result> {
 		const { ranks } = filters
 		const storesData = await Promise.all(ranks.map(async rank => await this.fetchStoresData(section, rank)))
 		const allStores: StoreDTO[] = []
@@ -59,7 +59,7 @@ export class StoreService {
 			order,
 			limit,
 			start = 0
-		}: StoresQuery
+		}: GetStoresQuery
 	): Result {
 		if (flashDiscount !== false) stores = this.flashDiscountFilter(stores)
 		if (minReputation !== undefined) stores = this.reputationFilter(stores, minReputation)

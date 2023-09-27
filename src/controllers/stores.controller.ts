@@ -1,5 +1,5 @@
 import { type Request, type Response, type NextFunction } from 'express'
-import { type StoresQuery } from '../interfaces'
+import { type GetStoresQuery } from '../interfaces'
 import { StoreService } from '../services'
 
 const storeService = new StoreService()
@@ -32,7 +32,7 @@ export async function getStores(req: Request, res: Response, next: NextFunction)
 	}
 
 	try {
-		const stores = await storeService.getStores(section, (storeQuery as unknown) as StoresQuery)
+		const stores = await storeService.getStores(section, (storeQuery as unknown) as GetStoresQuery)
 		res.json(stores)
 	} catch (error) {
 		next(error)

@@ -1,4 +1,4 @@
-export interface StoresQuery {
+export interface GetStoresQuery {
     ranks: Rank[]
     name?: string
     order?: string

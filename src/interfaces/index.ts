@@ -1,1 +1,1 @@
-export * from './store-filters.interface.d'
+export * from './get-stores-query.interface.d'
