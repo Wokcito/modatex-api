@@ -3,38 +3,21 @@ import { query } from 'express-validator'
 import { getStores } from '../controllers'
 import { validationResult } from '../middlewares'
 import { ranksValidator } from '../helpers'
+import { QueryFields, ErrorMessages } from '../types'
 
 export const storesRouter = Router()
-
-const enum QueryFields {
-    RANKS = 'ranks',
-    NAME = 'name',
-    MIN_SALES = 'minSales',
-    MIN_SALES_PERCENT = 'minSalesPercent',
-    FIELD_ORDER = 'fieldOrder',
-    MIN_REPUTATION = 'minReputation',
-    MAX_MINIMUM = 'maxMinimum',
-    MIN_MINIMUM = 'minMinimum',
-    FLASH_DISCOUNT = 'flashDiscount',
-	ORDER = 'order',
-	START = 'start',
-	LIMIT = 'limit'
-}
 
 const FIELD_ORDERS = ['reputation', 'minimum', 'name', 'sales', 'sales_percent']
 const ORDERS = ['asc', 'desc']
 
 storesRouter.get('/:section', [
 	query(QueryFields.RANKS)
-		.exists().withMessage('It\'s required')
-		.bail()
-		.isString().withMessage('It must be a string')
+		.exists().withMessage(ErrorMessages.EXISTS)
 		.bail()
 		.custom(ranksValidator)
 		.bail(),
 	query(QueryFields.NAME)
-		.optional()
-		.isString().withMessage('It must be a string'),
+		.optional(),
 	query([
 		QueryFields.MIN_SALES,
 		QueryFields.MIN_SALES_PERCENT,
@@ -46,14 +29,12 @@ storesRouter.get('/:section', [
 		QueryFields.LIMIT
 	])
 		.optional()
-		.isNumeric().withMessage('It must be a number'),
+		.isNumeric().withMessage(ErrorMessages.NUMERIC),
 	query(QueryFields.FIELD_ORDER)
 		.optional()
-		.isString().withMessage('It must be a number')
-		.isIn(FIELD_ORDERS).withMessage('It must be: \'reputation\' | \'minimum\' | \'name\' | \'sales\' | \'sales_percent\''),
+		.isIn(FIELD_ORDERS).withMessage(ErrorMessages.STORES_FIELD_ORDERS),
 	query(QueryFields.ORDER)
 		.optional()
-		.isString().withMessage('It must be a number')
-		.isIn(ORDERS).withMessage('It must be: \'asc\' | \'desc\''),
+		.isIn(ORDERS).withMessage(ErrorMessages.ORDERS),
 	validationResult
 ], getStores)

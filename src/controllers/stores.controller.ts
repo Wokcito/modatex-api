@@ -1,5 +1,5 @@
 import { type Request, type Response, type NextFunction } from 'express'
-import { type GetStoresQuery } from '../interfaces'
+import { type GetStoresQuery } from '../types'
 import { StoreService } from '../services'
 
 const storeService = new StoreService()

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { type StoreDTO } from '../dtos'
 import { type Store } from '../models'
-import { type GetStoresQuery } from '../interfaces'
+import { type GetStoresQuery } from '../types'
 import { fromStoreToDTO } from '../mappers'
 
 const FIELD_MINIMUM = 'minimum'
