@@ -4,6 +4,7 @@ import { type StoreDTO } from '../dtos'
 import { type Store } from '../models'
 import { type GetStoresQuery } from '../types'
 import { fromStoreToDTO } from '../mappers'
+import { BASE_URL } from '../config'
 
 const FIELD_MINIMUM = 'minimum'
 const FIELD_REPUTATION = 'reputation'
@@ -33,7 +34,6 @@ export class StoreService {
 	}
 
 	private async fetchStoresData(section: string, rank: string): Promise<Store[]> {
-		const BASE_URL = process.env.MT3 as string
 		const { data } = await axios.get<{ stores: Store[] }>(`${BASE_URL}json/cache_${section}_${rank}.json`)
 
 		return data.stores

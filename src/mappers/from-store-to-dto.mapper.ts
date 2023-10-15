@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { type StoreDTO } from '../dtos'
 import { type Store } from '../models'
+import { MEDIA_SERVER } from '../config'
 
 const LEADER_STORE = '1'
 
@@ -10,7 +11,6 @@ const LEADER_STORE = '1'
  * @returns {StoreDTO}
  */
 export function fromStoreToDTO({ local_cd, cover, slides, profile }: Store): StoreDTO {
-	const MEDIA_SERVER = process.env.MEDIA_SERVER as string
 	return {
 		store_id: parseInt(local_cd),
 		name: cover.title,

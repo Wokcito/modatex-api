@@ -1,9 +1,9 @@
-import Express from 'express'
-import dotenv from 'dotenv'
-
-import { Server } from './server'
-
+/* eslint-disable import/first */
+import * as dotenv from 'dotenv'
 dotenv.config()
+
+import Express from 'express'
+import { Server } from './server'
 
 const expressApplication = Express()
 const server = new Server(expressApplication)

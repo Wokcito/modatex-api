@@ -26,9 +26,9 @@ pnpm install
 Create a new .env file in the project root and add the next variables
 
 ```
-MEDIA_SERVER="https://netivooregon.s3.amazonaws.com/"
-MT3="https://www.modatex.com.ar/modatexrosa3/"
-ACCEPTED_ORIGIN="https://yourweb.com"
+MEDIA_SERVER=https://netivooregon.s3.amazonaws.com/
+BASE_URL=https://www.modatex.com.ar/modatexrosa3/
+ACCEPTED_ORIGINS=https://yourweb.com,https://yourotherweb.com
 ```
 
 ## Endpoints
@@ -36,6 +36,8 @@ ACCEPTED_ORIGIN="https://yourweb.com"
 ### Stores
 
 `GET` `/stores/{Section}`
+
+*Gets the information from Modatex's stores*
 
 #### Parameters:
 
@@ -50,7 +52,7 @@ ACCEPTED_ORIGIN="https://yourweb.com"
 - minReputation: `number`
 - maxMinimum: `number`
 - minMinimum: `number`
-- flashDiscount: `1 = true` _(boolean)_
+- flashDiscount: `1` *if true*
 - start: `number`
 - limit: `number`
 - order: `'asc'` | `'desc'`
